@@ -141,16 +141,22 @@ const Registration = () => {
             }
 
             { addresses && selected_address
-                ?   <div className={styles.address_form} data-testid="address-form">
-                        <p>Address line 1*</p>
-                        <input type="text" name="line1" value={line1} placeholder="Line 1" onChange={(e) => set_line1(e.target.value)}/>
-                        <p>Address line 2</p>
-                        <input type="text" name="line2" value={line2} placeholder="Line 2" onChange={(e) => set_line2(e.target.value)}/>
-                        <p>City</p>
-                        <input type="text" name="city" value={city} placeholder="City" onChange={(e) => set_city(e.target.value)}/>
-                        <p>Postcode</p>
-                        <input type="text" name="postcode" value={postcode} placeholder="Postcode" onChange={(e) => set_postcode(e.target.value)}/>
-                    </div>
+                ?   <React.Fragment>
+                        <div className={styles.double_chevron}>
+                            <img src='images/icons/double-chevron.png'/>
+                        </div>
+                        
+                        <div className={styles.address_form} data-testid="address-form">
+                            <p>Address line 1*</p>
+                            <input type="text" name="line1" value={line1} placeholder="Line 1" onChange={(e) => set_line1(e.target.value)}/>
+                            <p>Address line 2</p>
+                            <input type="text" name="line2" value={line2} placeholder="Line 2" onChange={(e) => set_line2(e.target.value)}/>
+                            <p>City</p>
+                            <input type="text" name="city" value={city} placeholder="City" onChange={(e) => set_city(e.target.value)}/>
+                            <p>Postcode</p>
+                            <input type="text" name="postcode" value={postcode} placeholder="Postcode" onChange={(e) => set_postcode(e.target.value)}/>
+                        </div>
+                    </React.Fragment>
                 :   null
             }
 

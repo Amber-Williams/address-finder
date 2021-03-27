@@ -18,6 +18,17 @@
     width: 100%;
 }
 
+.double_chevron {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.double_chevron img {
+    width: 12px;
+    height: 12px;
+}
+
 .address_form input {
     border: 1px solid $color-primary-light;
     background: transparent;
