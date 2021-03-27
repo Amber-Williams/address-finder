@@ -3,14 +3,18 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { remove_address, selector_addresses } from './../registration/registrationSlice'
 import { RegisteredAddressType, RegisteredAddressPropsType } from '../../types'
+import { address_formatter } from './../../utils/utils'
+import styles from './RegisteredAddresses.module.scss'
 
 const RegisteredAddress = (props: RegisteredAddressPropsType) => {
     const dispatch = useDispatch();
     return (
-        <div>
-            <p>{props.address.line1}</p>
-            <p>{props.address.date}</p>
-            <button onClick={() => dispatch(remove_address(props.address.line1))}>
+        <div className={styles.registered_address}>
+            <div>
+                <p>{address_formatter(props.address, 'string')}</p>
+                <p className={styles.registered_address_date}>{props.address.date}</p>
+            </div>
+            <button onClick={() => dispatch(remove_address(props.address.line1 + props.address.line2 + props.address.city))}>
                 <img alt='delete icon' src='images/icons/delete.png'/>
             </button>
         </div>

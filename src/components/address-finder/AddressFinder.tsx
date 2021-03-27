@@ -2,14 +2,14 @@ import React from 'react'
 import Registration from '../registration/Registration'
 import RegisteredAddresses from '../registered-addresses/RegisteredAddresses'
 
+import styles from './AddressFinder.module.scss'
+
 const AddressFinder = () => (
-    <div>
+    <div className={styles.container}>
         <h1>Address Search</h1>
         <h2>Please enter your address</h2>
-        <div/>
+        <div className={styles.line}></div>
         <RegisteredAddresses/>
-
-        <p>How long have you lived at your current address?</p>
         <Registration/>
     </div>
 )

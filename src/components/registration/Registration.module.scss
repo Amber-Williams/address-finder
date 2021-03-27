@@ -1,0 +1,55 @@
+@import "./../../index.scss";
+
+.registration p {
+    margin-top: 1.5rem;
+}
+
+.registration p {
+    margin-top: 1.5rem;
+}
+
+.dates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+}
+
+.address_form {
+    width: 100%;
+}
+
+.address_form input {
+    border: 1px solid $color-primary-light;
+    background: transparent;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    width: -webkit-fill-available;
+}
+
+.address_form input::placeholder {
+    color: $color-primary-light;
+}
+
+.address_submit {
+    display: flex;
+    margin-top: 2.5rem;
+}
+
+.address_submit button {
+    background: $color-primary-light;
+    color: $color-primary;
+    border: 2px solid $color-primary;
+    padding: 1rem;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 50px;
+    height: 60px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.error_message {
+    text-align: center;
+    font-weight: bold;
+}

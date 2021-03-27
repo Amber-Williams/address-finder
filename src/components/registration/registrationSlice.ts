@@ -20,7 +20,7 @@ export const registrationSlice = createSlice({
         state.addresses.push(action.payload);
     },
     remove_address: (state, action: PayloadAction<string>) => {
-        state.addresses = state.addresses.filter(_address => _address.line1 !== action.payload)
+        state.addresses = state.addresses.filter(_address => (_address.line1 + _address.line2 + _address.city) !== action.payload)
     },
   },
 });

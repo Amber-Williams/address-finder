@@ -11,7 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to left, $color-primary, $color-secondary)
+  background: linear-gradient(to left, $color-primary 30%, $color-secondary)
 }
 
 code {
@@ -19,4 +19,10 @@ code {
     monospace;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+    color: $color-primary-light;
+}
 
+p {
+    opacity: 0.9;
+}

@@ -1,6 +1,6 @@
-import React, { useState }from 'react'
-
+import React, { useState } from 'react'
 import { handle_enter_keydown, verify_postcode } from '../../utils/utils'
+import styles from './SearchPostcodes.module.scss'
 
 interface Props {
     set_postcode: (postcode: string) => void,
@@ -44,14 +44,16 @@ const SearchPostcodes = (props: Props) => {
     }
 
     return (
-        <React.Fragment>
-            <input type="text" placeholder="postcode" onChange={on_postcode_change} onKeyDown={(e) => handle_enter_keydown(e, get_addresses)} data-testid="postcode1"/>
-            <button onClick={get_addresses}>
-                <img alt="search-icon" src="images/icons/magnifying-glass.png"/>
-            </button>
+        <div className={styles.search}>
+            <div className={styles.search__bar}>
+            <input type="text" placeholder="Enter postcode" onChange={on_postcode_change} onKeyDown={(e) => handle_enter_keydown(e, get_addresses)} data-testid="postcode1"/>
+                <button onClick={get_addresses}>
+                    <img alt="search-icon" src="images/icons/magnifying-glass.png"/>
+                </button>
+            </div>
             
-            <p>{error_api_postcode}</p>
-        </React.Fragment>
+            <p className={styles.error_message}>{error_api_postcode}</p>
+        </div>
     )
 }
 

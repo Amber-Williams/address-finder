@@ -36,11 +36,11 @@ test('Capture the address of UK-based user and save user address', async () => {
     })
     // user sets years at address
     const years_dropdown = screen.getByTestId('address-years-selector') as HTMLInputElement
-    userEvent.selectOptions(years_dropdown, "1")
+    userEvent.selectOptions(years_dropdown, "1 year")
 
     // user sets months at address
     const months_dropdown = screen.getByTestId('address-months-selector') as HTMLInputElement
-    userEvent.selectOptions(months_dropdown, "1")
+    userEvent.selectOptions(months_dropdown, "1 month")
 
     // user enters invalid postcode and recieves error message
     const postcode1 = screen.getByTestId('postcode1') as HTMLInputElement

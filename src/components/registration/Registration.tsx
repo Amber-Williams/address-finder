@@ -6,7 +6,7 @@ import { add_address } from './registrationSlice'
 import SearchPostcodes from './../search-postcodes/SearchPostcodes'
 import SelectDropdown from './../select-dropdown/SelectDropdown'
 
-import './Registration.module.scss'
+import styles from './Registration.module.scss'
 
 const Registration = () => {
     const dispatch = useDispatch()
@@ -54,7 +54,7 @@ const Registration = () => {
                 locality, 
                 city, 
                 county, 
-                date: `Time at address: ${years} year, ${months} months`
+                date: `Time at address: ${years}, ${months}`
             })
         );
         set_addresses(null)
@@ -84,72 +84,81 @@ const Registration = () => {
     }
 
     return (
-        <div>
-            <SelectDropdown placeholder="Select years"
-                            on_change={(e) => set_years(e.target.value)}
-                            selections={[
-                { value: '0', name: '0'},
-                { value: '1', name: '1'},
-                { value: '2', name: '2'},
-                { value: '3', name: '3'},
-                { value: '4', name: '4'},
-                { value: '5+', name: '5+'},
-                ]}
-                testid="address-years-selector"
-                />
+        <div className={styles.registration}>
+            <p>How long have you lived at your current address?</p>
+            <div className={styles.dates}>
+                <SelectDropdown placeholder="Select years"
+                                on_change={(e) => set_years(e.target.value)}
+                                selections={[
+                    { value: '0 years', name: '0 years'},
+                    { value: '1 year', name: '1 year'},
+                    { value: '2 years', name: '2 years'},
+                    { value: '3 years', name: '3 years'},
+                    { value: '4 years', name: '4 years'},
+                    { value: '5+ years', name: '5+ years'},
+                    ]}
+                    testid="address-years-selector"
+                    />
 
-            <SelectDropdown placeholder="Select months"
-                            on_change={(e) => set_months(e.target.value)}
-                            selections={[
-                { value: '0', name: '0'},
-                { value: '1', name: '1'},
-                { value: '2', name: '2'},
-                { value: '3', name: '3'},
-                { value: '5', name: '5'},
-                { value: '6', name: '6'},
-                { value: '7', name: '7'},
-                { value: '8', name: '8'},
-                { value: '9', name: '9'},
-                { value: '10', name: '10'},
-                { value: '11', name: '11'},
-                ]}
-                testid="address-months-selector"
-                />
+                <SelectDropdown placeholder="Select months"
+                                on_change={(e) => set_months(e.target.value)}
+                                selections={[
+                    { value: '0 months', name: '0 months'},
+                    { value: '1 month', name: '1 month'},
+                    { value: '2 months', name: '2 months'},
+                    { value: '3 months', name: '3 months'},
+                    { value: '5 months', name: '5 months'},
+                    { value: '6 months', name: '6 months'},
+                    { value: '7 months', name: '7 months'},
+                    { value: '8 months', name: '8 months'},
+                    { value: '9 months', name: '9 months'},
+                    { value: '10 months', name: '10 months'},
+                    { value: '11 months', name: '11 months'},
+                    ]}
+                    testid="address-months-selector"
+                    />
+            </div>
+
+            <p>Postcode search</p>
             <SearchPostcodes set_postcode={set_postcode} postcode={postcode} set_addresses={set_addresses}/>
 
             { addresses
-                ? <SelectDropdown placeholder="Select address"
-                                on_change={(e) => {
-                                    set_selected_address(e.target.value);
-                                    generate_form(e.target.value)
-                                }}
-                                selections={addresses.map((address: string) => {
-                                    return { value: address, name: address_formatter(address, 'string')}
-                                })}
-                                testid="address-selector"
-                    />
+                ?   <React.Fragment>
+                        <p>Address</p>
+                        <SelectDropdown placeholder="Select address"
+                                    on_change={(e) => {
+                                        set_selected_address(e.target.value);
+                                        generate_form(e.target.value)
+                                    }}
+                                    selections={addresses.map((address: string) => {
+                                        return { value: address, name: address_formatter(address, 'string')}
+                                    })}
+                                    testid="address-selector"
+                        />
+                    </React.Fragment>
+                    
                 : null
             }
 
             { addresses && selected_address
-                ?   <div data-testid="address-form">
+                ?   <div className={styles.address_form} data-testid="address-form">
+                        <p>Address line 1*</p>
                         <input type="text" name="line1" value={line1} placeholder="Line 1" onChange={(e) => set_line1(e.target.value)}/>
+                        <p>Address line 2</p>
                         <input type="text" name="line2" value={line2} placeholder="Line 2" onChange={(e) => set_line2(e.target.value)}/>
-                        <input type="text" name="line3" value={line3} placeholder="Line 3" onChange={(e) => set_line3(e.target.value)}/>
-                        <input type="text" name="line4" value={line4} placeholder="Line 4" onChange={(e) => set_line4(e.target.value)}/>
-                        <input type="text" name="locality" value={locality} placeholder="Locality" onChange={(e) => set_locality(e.target.value)}/>
+                        <p>City</p>
                         <input type="text" name="city" value={city} placeholder="City" onChange={(e) => set_city(e.target.value)}/>
-                        <input type="text" name="county" value={county} placeholder="County" onChange={(e) => set_county(e.target.value)}/>
-                        <input type="text" name="county" value={postcode} placeholder="County" onChange={(e) => set_postcode(e.target.value)}/>
+                        <p>Postcode</p>
+                        <input type="text" name="postcode" value={postcode} placeholder="Postcode" onChange={(e) => set_postcode(e.target.value)}/>
                     </div>
                 :   null
             }
 
             { addresses && selected_address
-                ?   <button onClick={on_address_submit} data-testid="address-submit">submit address</button>
+                ?   <div className={styles.address_submit}><button  onClick={on_address_submit} data-testid="address-submit">Add address</button></div>
                 :   null
             }
-            {error_address}
+            <p className={styles.error_message}>{error_address}</p>
         </div>
     )
 }

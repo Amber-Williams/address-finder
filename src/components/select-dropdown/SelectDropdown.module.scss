@@ -1,0 +1,10 @@
+@import "./../../index.scss";
+
+.select {
+    border: 1px solid $color-primary-light;
+    background: transparent;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    width: 100%;
+}

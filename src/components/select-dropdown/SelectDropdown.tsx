@@ -1,8 +1,10 @@
 import React from 'react'
 import { SelectDropdownPropsType } from './../../types'
+import styles from './SelectDropdown.module.scss'
 
 const SelectDropdown = (props: SelectDropdownPropsType) => (
-    <select defaultValue={props.placeholder}
+    <select className={styles.select}
+            defaultValue={props.placeholder}
             onChange={props.on_change}
             data-testid={props.testid}
             >
