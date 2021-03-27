@@ -45,7 +45,7 @@ const SearchPostcodes = (props: Props) => {
 
     return (
         <React.Fragment>
-            <input type="text" placeholder="postcode" onChange={on_postcode_change} onKeyDown={(e) => handle_enter_keydown(e, get_addresses)}/>
+            <input type="text" placeholder="postcode" onChange={on_postcode_change} onKeyDown={(e) => handle_enter_keydown(e, get_addresses)} data-testid="postcode1"/>
             <button onClick={get_addresses}>
                 <img alt="search-icon" src="images/icons/magnifying-glass.png"/>
             </button>

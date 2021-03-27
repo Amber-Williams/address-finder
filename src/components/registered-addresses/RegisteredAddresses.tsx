@@ -11,7 +11,7 @@ const RegisteredAddress = (props: RegisteredAddressPropsType) => {
             <p>{props.address.line1}</p>
             <p>{props.address.date}</p>
             <button onClick={() => dispatch(remove_address(props.address.line1))}>
-                <img alt='delete-icon' src='images/icons/delete.png'/>
+                <img alt='delete icon' src='images/icons/delete.png'/>
             </button>
         </div>
     )
@@ -23,7 +23,9 @@ const RegisteredAddresses = () => {
     return (
         <React.Fragment>
             {registered_addresses.length > 0
-                ?   registered_addresses.map((_address: RegisteredAddressType, index: number) => <RegisteredAddress key={index} address={_address}/>)
+                ?   <div data-testid="addresses-registered">
+                        {registered_addresses.map((_address: RegisteredAddressType, index: number) => <RegisteredAddress key={index} address={_address}/>)}
+                        </div>
                 :   null
             }
         </React.Fragment>

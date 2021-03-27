@@ -3,7 +3,7 @@
 ## start up locally
 *note: project is run on node v15.11.0 and yarn version v1.22.4*
 1. Install project dependencies running `yarn` in root directory 
-2. create an .env.local file with the following outline:
+2. create an .env file with the following outline:
 ```
 # server
 ADDRESS_API_KEY=################################

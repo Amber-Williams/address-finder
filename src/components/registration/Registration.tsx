@@ -95,6 +95,7 @@ const Registration = () => {
                 { value: '4', name: '4'},
                 { value: '5+', name: '5+'},
                 ]}
+                testid="address-years-selector"
                 />
 
             <SelectDropdown placeholder="Select months"
@@ -112,6 +113,7 @@ const Registration = () => {
                 { value: '10', name: '10'},
                 { value: '11', name: '11'},
                 ]}
+                testid="address-months-selector"
                 />
             <SearchPostcodes set_postcode={set_postcode} postcode={postcode} set_addresses={set_addresses}/>
 
@@ -124,12 +126,13 @@ const Registration = () => {
                                 selections={addresses.map((address: string) => {
                                     return { value: address, name: address_formatter(address, 'string')}
                                 })}
+                                testid="address-selector"
                     />
                 : null
             }
 
             { addresses && selected_address
-                ?   <div>
+                ?   <div data-testid="address-form">
                         <input type="text" name="line1" value={line1} placeholder="Line 1" onChange={(e) => set_line1(e.target.value)}/>
                         <input type="text" name="line2" value={line2} placeholder="Line 2" onChange={(e) => set_line2(e.target.value)}/>
                         <input type="text" name="line3" value={line3} placeholder="Line 3" onChange={(e) => set_line3(e.target.value)}/>
@@ -143,7 +146,7 @@ const Registration = () => {
             }
 
             { addresses && selected_address
-                ?   <button onClick={on_address_submit}>submit address</button>
+                ?   <button onClick={on_address_submit} data-testid="address-submit">submit address</button>
                 :   null
             }
             {error_address}

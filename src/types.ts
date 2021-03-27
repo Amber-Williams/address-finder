@@ -28,7 +28,7 @@ export interface SelectDropdownPropsType {
     selections: SelectDropdownSelectionsType[],
     on_change: React.ChangeEventHandler<HTMLSelectElement>
     placeholder?: string,
-    test_id?: string,
+    testid?: string,
 }
 
 export interface RegisteredAddressPropsType {
