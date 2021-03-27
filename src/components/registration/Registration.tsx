@@ -42,7 +42,7 @@ const Registration = () => {
             return;
         }
         if (!months) {
-            set_error_address('Please select month at address.')
+            set_error_address('Please select months at address.')
             return;
         }
         dispatch(add_address(
