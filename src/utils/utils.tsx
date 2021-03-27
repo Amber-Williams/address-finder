@@ -1,20 +1,12 @@
+import { AddressType } from "./../types"
+
 export function verify_postcode(postcode: string) {
     postcode = postcode.replace(/\s/g, "");
     var regex = /^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i;
     return regex.test(postcode);
 }
 
-interface Address {
-    line1: string,
-    line2: string,
-    line3: string,
-    line4: string,
-    locality: string,
-    city: string,
-    county: string
-}
-
-export function address_formatter(address: string | Address, format_to_type: string) {
+export function address_formatter(address: string | AddressType, format_to_type: string) {
     switch(format_to_type) {
         case 'raw':
             if (typeof address === 'object') {
@@ -49,5 +41,12 @@ export function address_formatter(address: string | Address, format_to_type: str
             } else {
                 throw new Error("Object cannot be transformed to object");
             }
+    }
+}
+
+export function handle_enter_keydown(event: React.KeyboardEvent, callback: () => void) {
+    if (event.key === 'Enter') {
+        callback();
+        return;
     }
 }
